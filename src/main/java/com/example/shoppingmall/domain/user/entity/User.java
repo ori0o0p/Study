@@ -1,4 +1,4 @@
-package com.example.shoppingmall.domain.customer.entity;
+package com.example.shoppingmall.domain.user.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -9,8 +9,8 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 @RequiredArgsConstructor
-@Document(collation = "customer")
-public class Customer {
+@Document(collation = "user")
+public class User {
 
     @Id
     private String id;
@@ -24,10 +24,14 @@ public class Customer {
     @NotBlank
     private String password;
 
+    @NotBlank
+    private Role role;
+
     @Builder
-    public Customer(String name, String email, String password) {
+    public User(String name, String email, String password, Role role) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 }
