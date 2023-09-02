@@ -1,4 +1,4 @@
-package com.example.shoppingmall.domain.user.controller.response;
+package com.example.shoppingmall.domain.user.controller.request;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +9,4 @@ public class SignupRequest {
     private String email;
     private String name;
     private String password;
-    private String authCode;
-
 }
