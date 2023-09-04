@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 @RequiredArgsConstructor
-@Document(collation = "user")
+@Document
 public class User {
 
     @Id
