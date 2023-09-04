@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,7 +22,7 @@ public class ProductService {
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
 
-    public void createProduct(ProductRequest request) {
+    public void create(ProductRequest request) {
         User user = userRepository.findByEmail(request.getSellerEmail())
                 .orElseThrow(() -> new RuntimeException()); // 예외 처리 예정
 
@@ -42,7 +41,7 @@ public class ProductService {
                 .build());
     }
 
-    public void modifyProduct(ProductModifyRequest request, String id) {
+    public void modify(ProductModifyRequest request, String id) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException()); // 예외 처리 예정
 
@@ -79,7 +78,22 @@ public class ProductService {
         )).toList();
     }
 
-    public void deleteProduct(String id) {
+    public ProductResponse findById(String id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException()); // 예외 처리 예정
+
+        return ProductResponse.builder()
+                .seller(product.getSeller())
+                .title(product.getTitle())
+                .description(product.getDescription())
+                .category(product.getCategory())
+                .price(product.getPrice())
+                .postDate(product.getPostdate())
+                .imageURL(product.getImageURL())
+                .build();
+    }
+
+    public void delete(String id) {
         productRepository.deleteById(id);
     }
 
