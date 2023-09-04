@@ -34,9 +34,10 @@ public class ProductService {
                         .price(request.getPrice())
                         .stock(request.getStock())
                         .postdate(date)
-                        .imageURL(request.getImage())
+                        .imageURL(request.getImageURL())
                 .build());
     }
+    
 
     public void deleteProduct(String id) {
         productRepository.deleteById(id);
