@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import java.util.Date;
 
 @Getter
-@Builder
 @RequiredArgsConstructor
 public class ProductResponse {
     private User seller;
@@ -20,7 +19,9 @@ public class ProductResponse {
     private String imageURL;
     private Date postDate;
 
-    public ProductResponse(String category, String title, String description, Integer price, Date postDate, String imageURL) {
+    @Builder
+    public ProductResponse(User seller, String category, String title, String description, Integer price, Date postDate, String imageURL) {
+        this.seller = seller;
         this.category = category;
         this.title = title;
         this.description = description;
