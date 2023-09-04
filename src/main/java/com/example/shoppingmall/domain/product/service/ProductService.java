@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 @Service
@@ -22,6 +23,9 @@ public class ProductService {
         User user = userRepository.findByEmail(request.getSellerEmail())
                 .orElseThrow(() -> new RuntimeException()); // 예외 처리 예정
 
+        LocalDateTime localDateTime = LocalDateTime.now();
+        Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+
         productRepository.save(Product.builder()
                         .seller(user)
                         .title(request.getTitle())
@@ -29,7 +33,7 @@ public class ProductService {
                         .category(request.getCategory())
                         .price(request.getPrice())
                         .stock(request.getStock())
-                        .postdate(new Date())
+                        .postdate(date)
                 .build());
     }
 
