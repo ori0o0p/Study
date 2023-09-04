@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ProductRequest {
 
+    private String sellerEmail;
+
     private String title;
     private String description;
     private String category;
