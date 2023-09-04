@@ -1,5 +1,6 @@
 package com.example.shoppingmall.domain.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -22,6 +23,7 @@ public class User {
     private String name;
 
     @NotBlank
+    @JsonIgnore
     private String password;
 
     @NotBlank
