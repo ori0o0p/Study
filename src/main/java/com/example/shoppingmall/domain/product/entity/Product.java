@@ -38,5 +38,5 @@ public class Product {
     private Integer stock;
 
     @NotBlank
-    private LocalDateTime postdate;
+    private Date postdate;
 }

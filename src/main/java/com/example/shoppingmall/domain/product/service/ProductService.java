@@ -29,9 +29,9 @@ public class ProductService {
                         .category(request.getCategory())
                         .price(request.getPrice())
                         .stock(request.getStock())
-                        .postdate(LocalDateTime.now())
+                        .postdate(new Date())
                 .build());
     }
-    
+
 
 }
