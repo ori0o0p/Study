@@ -56,6 +56,7 @@ public class ProductService {
         List<Product> productList = productRepository.findAll();
 
         return productList.stream().map(p -> new ProductResponse(
+                p.getSeller(),
                 p.getTitle(),
                 p.getDescription(),
                 p.getCategory(),
@@ -69,6 +70,7 @@ public class ProductService {
         List<Product> productList = productRepository.findByCategory(category);
 
         return productList.stream().map(p -> new ProductResponse(
+                p.getSeller(),
                 p.getCategory(),
                 p.getTitle(),
                 p.getDescription(),
