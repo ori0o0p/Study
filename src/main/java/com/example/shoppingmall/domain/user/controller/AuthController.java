@@ -1,8 +1,8 @@
 package com.example.shoppingmall.domain.user.controller;
 
-import com.example.shoppingmall.domain.user.controller.request.LoginRequest;
-import com.example.shoppingmall.domain.user.controller.request.SignupRequest;
-import com.example.shoppingmall.domain.user.controller.response.LoginResponse;
+import com.example.shoppingmall.domain.user.controller.dto.request.LoginRequest;
+import com.example.shoppingmall.domain.user.controller.dto.request.SignupRequest;
+import com.example.shoppingmall.domain.user.controller.dto.response.LoginResponse;
 import com.example.shoppingmall.domain.user.service.LoginService;
 import com.example.shoppingmall.domain.user.service.SignupService;
 import lombok.RequiredArgsConstructor;
