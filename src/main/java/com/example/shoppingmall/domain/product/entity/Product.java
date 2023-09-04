@@ -39,4 +39,6 @@ public class Product {
 
     @NotBlank
     private Date postdate;
+
+    private String imageURL = "";
 }

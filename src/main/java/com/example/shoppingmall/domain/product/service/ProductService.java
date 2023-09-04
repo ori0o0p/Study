@@ -34,6 +34,7 @@ public class ProductService {
                         .price(request.getPrice())
                         .stock(request.getStock())
                         .postdate(date)
+                        .imageURL(request.getImage())
                 .build());
     }
 
