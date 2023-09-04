@@ -37,5 +37,8 @@ public class ProductService {
                 .build());
     }
 
+    public void deleteProduct(String id) {
+        productRepository.deleteById(id);
+    }
 
 }
