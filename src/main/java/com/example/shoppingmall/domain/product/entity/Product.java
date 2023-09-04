@@ -29,5 +29,4 @@ public class Product {
     private String category;
     @NotBlank
     private Date postdate;
-
 }
