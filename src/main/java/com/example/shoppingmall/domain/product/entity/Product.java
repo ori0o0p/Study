@@ -1,5 +1,6 @@
 package com.example.shoppingmall.domain.product.entity;
 
+import com.example.shoppingmall.domain.product.controller.dto.response.ProductResponse;
 import com.example.shoppingmall.domain.user.entity.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,8 +15,6 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
-@Setter
-@Builder
 @RequiredArgsConstructor
 @Document(collation = "product")
 public class Product {
@@ -41,6 +40,18 @@ public class Product {
     private Date postdate;
 
     private String imageURL = "";
+
+    @Builder
+    public Product(User seller, String title, String description, String category, Integer price, Integer stock, Date postdate, String imageURL) {
+        this.seller = seller;
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.price = price;
+        this.stock = stock;
+        this.postdate = postdate;
+        this.imageURL = imageURL;
+    }
 
     public void Modify(String title, String description, String category, Integer price, String imageURL) {
         this.title = title;
