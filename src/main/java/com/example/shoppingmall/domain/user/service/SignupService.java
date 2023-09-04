@@ -17,7 +17,7 @@ public class SignupService {
     public void execute(SignupRequest request) {
         if (userRepository.findByName(request.getName()) .isPresent() ||
             userRepository.findByEmail(request.getEmail()).isPresent()) {
-            // 예외 처리할 예정
+            throw new RuntimeException();// 예외 처리할 예정
         }
 
         userRepository.save(User.builder()

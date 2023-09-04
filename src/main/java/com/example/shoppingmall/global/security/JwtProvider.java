@@ -30,7 +30,7 @@ public class JwtProvider {
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
         Date expiration = new Date(nowMillis + exp * 1000L);
-            return Jwts.builder()
+        return Jwts.builder()
                     .claim("type", type)
                     .setIssuedAt(now)
                     .setSubject(email)
@@ -38,6 +38,7 @@ public class JwtProvider {
                     .signWith(SignatureAlgorithm.HS256, secretKey)
                     .compact();
     }
+
 
     public boolean validateToken(String token) {
         try {
