@@ -41,4 +41,13 @@ public class Product {
     private Date postdate;
 
     private String imageURL = "";
+
+    public void Modify(String title, String description, String category, Integer price, String imageURL) {
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.price = price;
+        this.imageURL = imageURL;
+    }
+
 }

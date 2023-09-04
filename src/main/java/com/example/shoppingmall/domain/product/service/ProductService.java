@@ -1,6 +1,7 @@
 package com.example.shoppingmall.domain.product.service;
 
 
+import com.example.shoppingmall.domain.product.controller.dto.request.ProductModifyRequest;
 import com.example.shoppingmall.domain.product.controller.dto.request.ProductRequest;
 import com.example.shoppingmall.domain.product.controller.dto.response.ProductResponse;
 import com.example.shoppingmall.domain.product.entity.Product;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -40,6 +42,17 @@ public class ProductService {
                 .build());
     }
 
+    public void modifyProduct(ProductModifyRequest request, String id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException()); // 예외 처리 예정
+
+        product.Modify(request.getTitle(),
+                request.getDescription(),
+                request.getCategory(),
+                request.getPrice(),
+                request.getImageURL());
+    }
+
     public List<ProductResponse> allList() {
         List<Product> productList = productRepository.findAll();
 
@@ -51,7 +64,6 @@ public class ProductService {
                 p.getPostdate(),
                 p.getImageURL()
         )).toList();
-
     }
 
     public List<ProductResponse> categoryList(String category) {
