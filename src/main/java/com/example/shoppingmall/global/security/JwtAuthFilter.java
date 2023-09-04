@@ -36,7 +36,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private String extractToken(HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         if (token == null || !token.startsWith("Bearer ")) {
-            throw new RuntimeException();
+            throw new RuntimeException(); // 예외 처리 예정
         }
         return token.substring("Bearer ".length());
     }
