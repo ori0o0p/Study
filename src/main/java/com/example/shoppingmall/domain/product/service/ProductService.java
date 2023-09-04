@@ -9,6 +9,7 @@ import com.example.shoppingmall.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Service
@@ -20,8 +21,7 @@ public class ProductService {
     public void createProduct(ProductRequest request) {
         User user = userRepository.findByEmail(request.getSellerEmail())
                 .orElseThrow(() -> new RuntimeException()); // 예외 처리 예정
-        long nowMillis = System.currentTimeMillis();
-        Date now = new Date(nowMillis);
+
         productRepository.save(Product.builder()
                         .seller(user)
                         .title(request.getTitle())
@@ -29,9 +29,9 @@ public class ProductService {
                         .category(request.getCategory())
                         .price(request.getPrice())
                         .stock(request.getStock())
-                        .postdate(now)
+                        .postdate(LocalDateTime.now())
                 .build());
     }
-
+    
 
 }

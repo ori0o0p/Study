@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -37,5 +38,5 @@ public class Product {
     private Integer stock;
 
     @NotBlank
-    private Date postdate;
+    private LocalDateTime postdate;
 }
