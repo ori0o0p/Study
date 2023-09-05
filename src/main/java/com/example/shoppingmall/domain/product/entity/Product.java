@@ -3,7 +3,7 @@ package com.example.shoppingmall.domain.product.entity;
 import com.example.shoppingmall.domain.user.entity.User;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor
 @Document(collation = "product")
 public class Product {
     @Id
