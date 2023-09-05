@@ -5,6 +5,7 @@ import com.example.shoppingmall.domain.product.entity.Product;
 import com.example.shoppingmall.domain.product.repository.ProductRepository;
 import com.example.shoppingmall.domain.user.entity.User;
 import com.example.shoppingmall.domain.user.repository.UserRepository;
+import com.example.shoppingmall.domain.user.service.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +16,11 @@ import java.util.Date;
 @Service
 @RequiredArgsConstructor
 public class ProductCreateService {
-    private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final UserFacade userFacade;
 
     public void execute(ProductRequest request) {
-        User user = userRepository.findByEmail(request.getSellerEmail())
-                .orElseThrow(() -> new RuntimeException()); // 예외 처리 예정
+        User user = userFacade.getUser();
 
         LocalDateTime localDateTime = LocalDateTime.now();
         Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());

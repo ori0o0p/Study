@@ -13,12 +13,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LoginService {
     private final PasswordEncoder passwordEncoder;
-    private final UserRepository userRepository;
     private final JwtProvider jwtProvider;
+    private final UserFacade userFacade;
 
     public LoginResponse execute(LoginRequest request) {
-        User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException()); // 예외 처리 예정
+        User user = userFacade.getUser();
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new RuntimeException(); // 예외 처리 예정
         }
