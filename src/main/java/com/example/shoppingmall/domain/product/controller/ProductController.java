@@ -3,7 +3,7 @@ package com.example.shoppingmall.domain.product.controller;
 import com.example.shoppingmall.domain.product.controller.dto.request.ProductModifyRequest;
 import com.example.shoppingmall.domain.product.controller.dto.request.ProductRequest;
 import com.example.shoppingmall.domain.product.controller.dto.response.ProductResponse;
-import com.example.shoppingmall.domain.product.service.ProductService;
+import com.example.shoppingmall.domain.product.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,37 +13,42 @@ import java.util.List;
 @RequestMapping("/api/product")
 @RequiredArgsConstructor
 public class ProductController {
-    private final ProductService productService;
+    private final ProductCreateService productCreateService;
+    private final ProductModifyService productModifyService;
+    private final ProductDeleteService productDeleteService;
+    private final ProductFindAllService productFindAllService;
+    private final ProductFindByIdService productFindByIdService;
+    private final ProductGetCategoryListService productGetCategoryListService;
 
     @PostMapping
     public void createProduct(@RequestBody ProductRequest request) {
-        productService.create(request);
+        productCreateService.execute(request);
     }
 
-    @PostMapping("/modify")
+    @PostMapping("/modify/{id}")
     public void modifyProduct(@RequestBody ProductModifyRequest request,
                               @PathVariable String id) {
-        productService.modify(request, id);
+        productModifyService.execute(request, id);
     }
 
     @GetMapping("{id}")
     public ProductResponse findById(@PathVariable String id) {
-        return productService.findById(id);
+        return productFindByIdService.execute(id);
     }
 
     @GetMapping("/search/{category}")
     public List<ProductResponse> findByCategory(@PathVariable String category) {
-        return productService.categoryList(category);
+        return productGetCategoryListService.execute(category);
     }
 
     @GetMapping
     public List<ProductResponse> findAll() {
-        return productService.allList();
+        return productFindAllService.execute();
     }
 
     @DeleteMapping("{id}")
     public void deleteProductById(@PathVariable String id) {
-        productService.delete(id);
+        productDeleteService.execute(id);
     }
 
 
