@@ -13,7 +13,6 @@ import javax.validation.constraints.Pattern;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @Document(collation = "review")
 public class Review {
@@ -35,5 +34,12 @@ public class Review {
 
     private String imageURL;
 
-
+    @Builder
+    public Review(Integer rating, String writerEmail, String contents, String productId, String imageURL) {
+        this.rating = rating;
+        this.writerEmail = writerEmail;
+        this.contents = contents;
+        this.productId = productId;
+        this.imageURL = imageURL;
+    }
 }

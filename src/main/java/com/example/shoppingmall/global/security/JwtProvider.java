@@ -4,6 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,7 +17,6 @@ import java.util.Collections;
 import java.util.Date;
 
 @Component
-@RequiredArgsConstructor
 public class JwtProvider {
 
     @Value("secret")
@@ -47,7 +47,6 @@ public class JwtProvider {
             throw new RuntimeException();
         }
     }
-
 
     public boolean validateToken(String token) {
         try {
