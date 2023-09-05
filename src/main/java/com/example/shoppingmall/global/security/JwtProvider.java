@@ -26,8 +26,8 @@ public class JwtProvider {
         return createToken(email, "access", 720L);
     }
 
-    private String createToken(String name, String type, Long exp) {
-        if (name == null || type == null || exp == null) {
+    private String createToken(String email, String type, Long exp) {
+        if (email == null || type == null || exp == null) {
             throw new RuntimeException();
         }
 
@@ -39,7 +39,7 @@ public class JwtProvider {
             return Jwts.builder()
                     .claim("type", type)
                     .setIssuedAt(now)
-                    .setSubject(name)
+                    .setSubject(email)
                     .setExpiration(expiration)
                     .signWith(SignatureAlgorithm.HS256, secretKey)
                     .compact();
@@ -76,11 +76,11 @@ public class JwtProvider {
     }
 
     private UserDetails createAuthenticatedUserFromClaims(Claims claims) {
-        String username = getName(claims);
+        String username = getEmail(claims);
         return new User(username, "", Collections.emptyList());
     }
 
-    private String getName(Claims claims) {
+    private String getEmail(Claims claims) {
         return claims.getSubject();
     }
 
