@@ -23,12 +23,15 @@ public class Product {
 
     @NotBlank
     private String title;
+
     @NotBlank
     private String description;
+
     @NotBlank
     private String category;
 
     private Integer price;
+
     private Integer stock;
 
     @NotBlank
