@@ -18,7 +18,7 @@ public class Product {
     @Id
     private String id;
 
-    @DBRef
+    @DBRef(db = "user")
     private User seller;
 
     @NotBlank
@@ -28,9 +28,7 @@ public class Product {
     @NotBlank
     private String category;
 
-    @NotBlank
     private Integer price;
-    @NotBlank
     private Integer stock;
 
     @NotBlank
