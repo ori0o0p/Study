@@ -1,9 +1,10 @@
 package com.example.shoppingmall.global.security;
 
-import io.jsonwebtoken.JwtException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Slf4j
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
 
@@ -19,26 +21,21 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
-        try {
-            String token = extractToken(request);
-            if (jwtProvider.validateToken(token)) {
-                Authentication authentication = jwtProvider.getAuthentication(token);
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            }
-        } catch (JwtException ex) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().write("Jwt validation error: " + ex.getMessage());
-            return;
+        String token = extractToken(request);
+        if(StringUtils.hasText(token) && jwtProvider.validateToken(token)){
+            Authentication authentication = jwtProvider.getAuthentication(token);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
         }
+        else
+            log.info("토큰이 유효하지 않습니다.");
         chain.doFilter(request, response);
     }
 
     private String extractToken(HttpServletRequest request) {
         String token = request.getHeader("Authorization");
-        if (token == null || !token.startsWith("Bearer ")) {
-            throw new RuntimeException(); // 예외 처리 예정
-        }
-        return token.substring("Bearer ".length());
+        if(StringUtils.hasText(token) && token.startsWith("Bearer "))
+            return token.substring("Bearer ".length());
+        return null;
     }
 
 }

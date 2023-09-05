@@ -23,26 +23,35 @@ public class JwtProvider {
     private String secretKey;
 
     public String createAccessToken(String email) {
-        return createToken(email, "access", 7200L);
+        return createToken(email, "access", 720L);
     }
 
-    private String createToken(String email, String type, Long exp) {
+    private String createToken(String name, String type, Long exp) {
+        if (name == null || type == null || exp == null) {
+            throw new RuntimeException();
+        }
+
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
         Date expiration = new Date(nowMillis + exp * 1000L);
-        return Jwts.builder()
+
+        try {
+            return Jwts.builder()
                     .claim("type", type)
                     .setIssuedAt(now)
-                    .setSubject(email)
+                    .setSubject(name)
                     .setExpiration(expiration)
                     .signWith(SignatureAlgorithm.HS256, secretKey)
                     .compact();
+        } catch (JwtException e) {
+            throw new RuntimeException();
+        }
     }
 
 
     public boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(secretKey).parseClaimsJwt(token);
+            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
             return true;
         } catch (JwtException e) {
             return false;
