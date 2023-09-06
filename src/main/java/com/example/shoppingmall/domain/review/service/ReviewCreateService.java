@@ -31,5 +31,5 @@ public class ReviewCreateService {
                 .imageURL(request.getImageURL())
                 .build());
     }
-    
+
 }
