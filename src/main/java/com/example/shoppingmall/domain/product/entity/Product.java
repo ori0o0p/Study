@@ -36,7 +36,7 @@ public class Product {
     private Integer stock;
 
     @NotBlank
-    private Date postdate;
+    private Date postedDate;
 
     private String imageURL = "";
 
@@ -44,22 +44,23 @@ public class Product {
     private Review review;
 
     @Builder
-    public Product(User seller, String title, String description, String category, Integer price, Integer stock, Date postdate, String imageURL) {
+    public Product(User seller, String title, String description, String category, Integer price, Integer stock, Date postedDate, String imageURL) {
         this.seller = seller;
         this.title = title;
         this.description = description;
         this.category = category;
         this.price = price;
         this.stock = stock;
-        this.postdate = postdate;
+        this.postedDate = postedDate;
         this.imageURL = imageURL;
     }
 
-    public void Modify(String title, String description, String category, Integer price, String imageURL) {
+    public void Modify(String title, String description, String category, Integer price, Date modifiedDate, String imageURL) {
         this.title = title;
         this.description = description;
         this.category = category;
         this.price = price;
+        this.postedDate = modifiedDate;
         this.imageURL = imageURL;
     }
 

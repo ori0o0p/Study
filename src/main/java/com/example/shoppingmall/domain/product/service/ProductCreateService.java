@@ -5,6 +5,7 @@ import com.example.shoppingmall.domain.product.entity.Product;
 import com.example.shoppingmall.domain.product.repository.ProductRepository;
 import com.example.shoppingmall.domain.user.entity.User;
 import com.example.shoppingmall.domain.user.service.facade.UserFacade;
+import com.example.shoppingmall.global.facade.DateFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +18,11 @@ import java.util.Date;
 public class ProductCreateService {
     private final ProductRepository productRepository;
     private final UserFacade userFacade;
+    private final DateFacade dateFacade;
 
     public void execute(ProductRequest request) {
         User user = userFacade.getUser();
-
-        LocalDateTime localDateTime = LocalDateTime.now();
-        Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+        Date now = dateFacade.getNowDate();
 
         productRepository.save(Product.builder()
                 .seller(user)
@@ -31,7 +31,7 @@ public class ProductCreateService {
                 .category(request.getCategory())
                 .price(request.getPrice())
                 .stock(request.getStock())
-                .postdate(date)
+                .postedDate(now)
                 .imageURL(request.getImageURL())
                 .build());
     }

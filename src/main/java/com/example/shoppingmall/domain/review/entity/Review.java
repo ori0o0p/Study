@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -36,14 +37,19 @@ public class Review {
     @DBRef(db = "product")
     private Product product;
 
+    private Date createdDate;
+
     private String imageURL;
 
     @Builder
-    public Review(Integer rating, User writer, String contents, Product product, String imageURL) {
+    public Review(Integer rating, User writer, String contents, Product product, Date createdDate, String imageURL) {
         this.rating = rating;
         this.writer = writer;
         this.contents = contents;
         this.product = product;
+        this.createdDate = createdDate;
         this.imageURL = imageURL;
     }
+
+
 }

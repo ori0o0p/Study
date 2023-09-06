@@ -7,8 +7,11 @@ import com.example.shoppingmall.domain.review.entity.Review;
 import com.example.shoppingmall.domain.review.repository.ReviewRepository;
 import com.example.shoppingmall.domain.user.entity.User;
 import com.example.shoppingmall.domain.user.service.facade.UserFacade;
+import com.example.shoppingmall.global.facade.DateFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
@@ -16,16 +19,19 @@ public class ReviewCreateService {
     private final ReviewRepository reviewRepository;
     private final UserFacade userFacade;
     private final ProductFacade productFacade;
+    private final DateFacade dateFacade;
 
     public void execute(ReviewRequest request) {
         User user = userFacade.getUser();
         Product product = productFacade.getProductById(request.getProductId());
+        Date now = dateFacade.getNowDate();
 
         reviewRepository.save(Review.builder()
                 .product(product)
                 .rating(request.getRating())
                 .contents(request.getContents())
                 .writer(user)
+                .createdDate(now)
                 .imageURL(request.getImageURL())
                 .build());
     }
