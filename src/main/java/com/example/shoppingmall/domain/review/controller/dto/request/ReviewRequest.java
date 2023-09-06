@@ -10,8 +10,6 @@ public class ReviewRequest {
 
     private String productId;
 
-    private String writerEmail;
-
     private String contents;
 
     private String imageURL;
