@@ -4,8 +4,7 @@ import com.example.shoppingmall.domain.product.controller.dto.request.ProductReq
 import com.example.shoppingmall.domain.product.entity.Product;
 import com.example.shoppingmall.domain.product.repository.ProductRepository;
 import com.example.shoppingmall.domain.user.entity.User;
-import com.example.shoppingmall.domain.user.repository.UserRepository;
-import com.example.shoppingmall.domain.user.service.UserFacade;
+import com.example.shoppingmall.domain.user.service.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

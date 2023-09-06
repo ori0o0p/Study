@@ -1,5 +1,6 @@
 package com.example.shoppingmall.domain.product.entity;
 
+import com.example.shoppingmall.domain.review.entity.Review;
 import com.example.shoppingmall.domain.user.entity.User;
 import lombok.Builder;
 import lombok.Getter;
@@ -38,6 +39,9 @@ public class Product {
     private Date postdate;
 
     private String imageURL = "";
+
+    @DBRef(db = "review")
+    private Review review;
 
     @Builder
     public Product(User seller, String title, String description, String category, Integer price, Integer stock, Date postdate, String imageURL) {

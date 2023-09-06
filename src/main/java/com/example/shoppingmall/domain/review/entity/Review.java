@@ -1,10 +1,13 @@
 package com.example.shoppingmall.domain.review.entity;
 
+import com.example.shoppingmall.domain.product.entity.Product;
+import com.example.shoppingmall.domain.user.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.Email;
@@ -22,24 +25,25 @@ public class Review {
     @Pattern(regexp = "^[0-5]$")
     private Integer rating;
 
-    @Email
     @NotBlank
-    private String writerEmail;
+    @DBRef(db = "user")
+    private User writer;
 
     @NotBlank
     private String contents;
 
     @NotBlank
-    private String productId;
+    @DBRef(db = "product")
+    private Product product;
 
     private String imageURL;
 
     @Builder
-    public Review(Integer rating, String writerEmail, String contents, String productId, String imageURL) {
+    public Review(Integer rating, User writer, String contents, Product product, String imageURL) {
         this.rating = rating;
-        this.writerEmail = writerEmail;
+        this.writer = writer;
         this.contents = contents;
-        this.productId = productId;
+        this.product = product;
         this.imageURL = imageURL;
     }
 }

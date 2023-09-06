@@ -1,4 +1,4 @@
-package com.example.shoppingmall.domain.user.service;
+package com.example.shoppingmall.domain.user.service.facade;
 
 import com.example.shoppingmall.domain.user.entity.User;
 import com.example.shoppingmall.domain.user.repository.UserRepository;
