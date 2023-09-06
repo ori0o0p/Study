@@ -19,6 +19,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtProvider jwtProvider;
 
+    private static final String HEADER = "Authorization";
+    private static final String PREFIX = "Bearer";
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
         String token = extractToken(request);
@@ -32,9 +35,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     }
 
     private String extractToken(HttpServletRequest request) {
-        String token = request.getHeader("Authorization");
-        if(StringUtils.hasText(token) && token.startsWith("Bearer "))
-            return token.substring("Bearer ".length());
+        String token = request.getHeader(HEADER);
+        if(StringUtils.hasText(token) && token.startsWith(PREFIX))
+            return token.substring(PREFIX.length());
         return null;
     }
 
