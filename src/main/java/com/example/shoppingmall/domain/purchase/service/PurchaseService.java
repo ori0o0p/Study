@@ -26,7 +26,7 @@ public class PurchaseService {
             log.error("재고가 부족합니다.");
             return PurchaseResponse.builder()
                     .stock(stock)
-                    .success(false)
+                    .isSuccess(false)
                     .build();
         } else {
             stock -= request.getAmount();
@@ -34,7 +34,7 @@ public class PurchaseService {
 
         return PurchaseResponse.builder()
                 .stock(stock)
-                .success(true)
+                .isSuccess(true)
                 .build();
 
     }

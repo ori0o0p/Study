@@ -8,5 +8,5 @@ import lombok.Getter;
 public class PurchaseResponse {
     private Integer stock;
 
-    private Boolean success;
+    private Boolean isSuccess;
 }
