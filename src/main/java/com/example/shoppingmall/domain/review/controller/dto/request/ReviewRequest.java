@@ -14,8 +14,6 @@ public class ReviewRequest {
 
     private String content;
 
-    private Date createdDate;
-
     private String imageURL;
 
 }
