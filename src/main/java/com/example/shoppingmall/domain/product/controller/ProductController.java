@@ -1,5 +1,6 @@
 package com.example.shoppingmall.domain.product.controller;
 
+import com.example.shoppingmall.domain.product.controller.dto.request.ModifyStockRequest;
 import com.example.shoppingmall.domain.product.controller.dto.request.ProductModifyRequest;
 import com.example.shoppingmall.domain.product.controller.dto.request.ProductRequest;
 import com.example.shoppingmall.domain.product.controller.dto.response.ProductResponse;
@@ -19,6 +20,7 @@ public class ProductController {
     private final ProductFindAllService productFindAllService;
     private final ProductFindByIdService productFindByIdService;
     private final ProductGetCategoryListService productGetCategoryListService;
+    private final ModifyStockService modifyStockService;
 
     @PostMapping
     public void createProduct(@RequestBody ProductRequest request) {
@@ -51,5 +53,9 @@ public class ProductController {
         productDeleteService.execute(id);
     }
 
+    @PostMapping("/stock")
+    public void addStock(@RequestBody ModifyStockRequest request) {
+        modifyStockService.execute(request);
+    }
 
 }

@@ -34,7 +34,7 @@ public class Product {
 
     private Integer price;
 
-    private Integer stock;
+    private Integer stock = 0;
 
     @NotBlank
     private Date postedDate;
@@ -63,6 +63,10 @@ public class Product {
         this.price = price;
         this.postedDate = modifiedDate;
         this.imageURL = imageURL;
+    }
+
+    public void ModifyStock(Integer stock) {
+        this.stock = stock;
     }
 
 }
