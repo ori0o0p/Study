@@ -31,7 +31,7 @@ public class Review {
     private User writer;
 
     @NotBlank
-    private String contents;
+    private String content;
 
     @NotBlank
     @DBRef(db = "product")
@@ -42,14 +42,20 @@ public class Review {
     private String imageURL;
 
     @Builder
-    public Review(Integer rating, User writer, String contents, Product product, Date createdDate, String imageURL) {
+    public Review(Integer rating, User writer, String content, Product product, Date createdDate, String imageURL) {
         this.rating = rating;
         this.writer = writer;
-        this.contents = contents;
+        this.content = content;
         this.product = product;
         this.createdDate = createdDate;
         this.imageURL = imageURL;
     }
 
+    public void modify(Integer rating, String content, Date modifiedDate, String imageURL) {
+        this.rating = rating;
+        this.content = content;
+        this.createdDate = modifiedDate;
+        this.imageURL = imageURL;
+    }
 
 }

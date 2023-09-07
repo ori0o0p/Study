@@ -1,5 +1,6 @@
 package com.example.shoppingmall.domain.product.entity;
 
+import com.example.shoppingmall.domain.review.controller.dto.response.ReviewResponse;
 import com.example.shoppingmall.domain.review.entity.Review;
 import com.example.shoppingmall.domain.user.entity.User;
 import lombok.Builder;
@@ -11,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -41,7 +43,7 @@ public class Product {
     private String imageURL = "";
 
     @DBRef(db = "review")
-    private Review review;
+    private List<ReviewResponse> review;
 
     @Builder
     public Product(User seller, String title, String description, String category, Integer price, Integer stock, Date postedDate, String imageURL) {

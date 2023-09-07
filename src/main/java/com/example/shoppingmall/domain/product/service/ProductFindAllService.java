@@ -23,7 +23,8 @@ public class ProductFindAllService {
                 p.getDescription(),
                 p.getCategory(),
                 p.getPrice(),
-                p.getPostdate(),
+                p.getReview(),
+                p.getPostedDate(),
                 p.getImageURL()
         )).toList();
     }

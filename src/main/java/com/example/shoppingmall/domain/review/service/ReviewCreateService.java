@@ -29,7 +29,7 @@ public class ReviewCreateService {
         reviewRepository.save(Review.builder()
                 .product(product)
                 .rating(request.getRating())
-                .contents(request.getContents())
+                .content(request.getContent())
                 .writer(user)
                 .createdDate(now)
                 .imageURL(request.getImageURL())

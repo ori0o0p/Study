@@ -12,7 +12,7 @@ public class ReviewRequest {
 
     private String productId;
 
-    private String contents;
+    private String content;
 
     private Date createdDate;
 
