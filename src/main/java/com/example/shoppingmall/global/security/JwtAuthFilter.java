@@ -30,7 +30,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         else
-            log.info("토큰이 유효하지 않습니다.");
+            log.error("토큰이 유효하지 않습니다.");
         chain.doFilter(request, response);
     }
 
