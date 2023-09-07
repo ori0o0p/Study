@@ -41,4 +41,13 @@ public class ProductResponse {
         this.imageURL = imageURL;
     }
 
+    public ProductResponse(User seller, String category, String title, String description, Integer price, Date postDate, String imageURL) {
+        this.seller = seller;
+        this.category = category;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.postDate = postDate;
+        this.imageURL = imageURL;
+    }
 }

@@ -22,7 +22,6 @@ public class ProductGetCategoryListService {
                 p.getTitle(),
                 p.getDescription(),
                 p.getPrice(),
-                p.getReview(),
                 p.getPostedDate(),
                 p.getImageURL()
         )).toList();

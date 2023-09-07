@@ -16,7 +16,7 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
-@Document(collation = "product")
+@Document
 public class Product {
     @Id
     private String id;
@@ -42,8 +42,8 @@ public class Product {
 
     private String imageURL = "";
 
-    @DBRef(db = "review")
-    private List<ReviewResponse> review;
+    @DBRef
+    private List<Review> review;
 
     @Builder
     public Product(User seller, String title, String description, String category, Integer price, Integer stock, Date postedDate, String imageURL) {

@@ -7,27 +7,27 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@Document
-public class User {
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @Document
+    public class User {
 
-    @Id
-    private String id;
+        @Id
+        private String id;
 
-    @NotBlank
-    private String email;
+        @NotBlank
+        private String email;
 
-    @NotBlank
-    private String name;
+        @NotBlank
+        private String name;
 
-    @NotBlank
-    @JsonIgnore
-    private String password;
+        @NotBlank
+        @JsonIgnore
+        private String password;
 
-    @NotBlank
-    private Role role;
+        @NotBlank
+        private Role role;
 
     @Builder
     public User(String name, String email, String password, Role role) {
