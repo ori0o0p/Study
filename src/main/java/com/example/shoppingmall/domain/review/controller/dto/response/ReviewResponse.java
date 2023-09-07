@@ -23,6 +23,5 @@ public class ReviewResponse {
         this.content = content;
         this.createdDate = createdDate;
         this.imageURL= imageURL;
-
     }
 }
