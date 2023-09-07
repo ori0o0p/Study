@@ -11,16 +11,20 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.Date;
 
 @Component
+@RequiredArgsConstructor
 public class JwtProvider {
 
     @Value("secret")
     private String secretKey;
+
+    private final UserDetailsService userDetailsService;
 
     public String createAccessToken(String email) {
         return createToken(email, "access", 720L);
@@ -75,8 +79,8 @@ public class JwtProvider {
     }
 
     private UserDetails createAuthenticatedUserFromClaims(Claims claims) {
-        String username = getEmail(claims);
-        return new User(username, "", Collections.emptyList());
+        String email = getEmail(claims);
+        return userDetailsService.loadUserByUsername(email);
     }
 
     private String getEmail(Claims claims) {
