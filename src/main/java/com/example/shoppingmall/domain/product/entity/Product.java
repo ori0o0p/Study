@@ -1,6 +1,5 @@
 package com.example.shoppingmall.domain.product.entity;
 
-import com.example.shoppingmall.domain.review.controller.dto.response.ReviewResponse;
 import com.example.shoppingmall.domain.review.entity.Review;
 import com.example.shoppingmall.domain.user.entity.User;
 import lombok.Builder;
@@ -21,7 +20,7 @@ public class Product {
     @Id
     private String id;
 
-    @DBRef(db = "user")
+    @DBRef
     private User seller;
 
     @NotBlank

@@ -10,7 +10,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.util.Date;
@@ -18,7 +17,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-@Document(collation = "review")
+@Document
 public class Review {
     @Id
     private String id;
@@ -27,14 +26,14 @@ public class Review {
     private Integer rating;
 
     @NotBlank
-    @DBRef(db = "user")
+    @DBRef
     private User writer;
 
     @NotBlank
     private String content;
 
     @NotBlank
-    @DBRef(db = "product")
+    @DBRef
     private Product product;
 
     private Date createdDate;

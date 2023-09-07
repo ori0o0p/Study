@@ -41,7 +41,7 @@ public class ProductResponse {
         this.imageURL = imageURL;
     }
 
-    public ProductResponse(User seller, String category, String title, String description, Integer price, Date postDate, String imageURL) {
+    public ProductResponse(User seller, String category, String title, String description, Integer price, Date postedDate, String imageURL) {
         this.seller = seller;
         this.category = category;
         this.title = title;
