@@ -69,4 +69,8 @@ public class Product {
         this.stock = stock;
     }
 
+    public void purchase(Integer amount) {
+        this.stock = amount;
+    }
+
 }

@@ -29,12 +29,12 @@ public class PurchaseService {
                     .build();
         } else {
             stock -= request.getAmount();
+            product.purchase(stock);
+            return PurchaseResponse.builder()
+                    .stock(stock)
+                    .isSuccess(true)
+                    .build();
         }
-
-        return PurchaseResponse.builder()
-                .stock(stock)
-                .isSuccess(true)
-                .build();
 
     }
 
