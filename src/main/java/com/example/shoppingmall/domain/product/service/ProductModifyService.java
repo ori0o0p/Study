@@ -19,7 +19,6 @@ public class ProductModifyService {
         Product product = productFacade.getProductById(id);
         Date now = dateFacade.getNowDate();
 
-
         product.Modify(request.getTitle(),
                 request.getDescription(),
                 request.getCategory(),
