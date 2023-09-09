@@ -1,6 +1,7 @@
 package com.example.shoppingmall.domain.user.service;
 
 import com.example.shoppingmall.domain.user.controller.dto.request.SignupRequest;
+import com.example.shoppingmall.domain.user.entity.Role;
 import com.example.shoppingmall.domain.user.entity.User;
 import com.example.shoppingmall.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class SignupService {
                 .name(request.getName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
+                .role(Role.CUSTOMER)
                 .build());
     }
 }
