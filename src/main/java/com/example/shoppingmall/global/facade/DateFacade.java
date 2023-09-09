@@ -13,5 +13,4 @@ public class DateFacade {
         LocalDateTime localDateTime = LocalDateTime.now();
         return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
-
 }
