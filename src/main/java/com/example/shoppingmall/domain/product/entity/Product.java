@@ -56,7 +56,7 @@ public class Product {
         this.imageURL = imageURL;
     }
 
-    public void Modify(String title, String description, String category, Integer price, Date modifiedDate, String imageURL) {
+    public void modify(String title, String description, String category, Integer price, Date modifiedDate, String imageURL) {
         this.title = title;
         this.description = description;
         this.category = category;
@@ -65,7 +65,7 @@ public class Product {
         this.imageURL = imageURL;
     }
 
-    public void ModifyStock(Integer stock) {
+    public void modifyStock(Integer stock) {
         this.stock = stock;
     }
 

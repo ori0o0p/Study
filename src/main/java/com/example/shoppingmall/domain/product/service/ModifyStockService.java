@@ -14,7 +14,7 @@ public class ModifyStockService {
 
     public void execute(ModifyStockRequest request) {
         Product product = productFacade.getProductById(request.getProductId());
-        product.ModifyStock(request.getStock());
+        product.modifyStock(request.getStock());
     }
 
 }
