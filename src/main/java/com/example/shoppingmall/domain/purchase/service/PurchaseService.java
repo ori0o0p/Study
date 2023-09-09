@@ -21,7 +21,7 @@ public class PurchaseService {
 
         Integer stock = productGetStockService.execute(product.getId());
 
-        if (stock < request.getAmount()) {
+        if (stock < request.getAmount() || stock == 0) {
             log.error("현재 재고 : " + stock + "재고가 부족합니다.");
             return PurchaseResponse.builder()
                     .stock(stock)
