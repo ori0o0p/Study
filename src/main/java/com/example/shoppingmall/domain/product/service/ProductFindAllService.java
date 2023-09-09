@@ -13,7 +13,6 @@ import java.util.List;
 public class ProductFindAllService {
     private final ProductRepository productRepository;
 
-
     public List<ProductResponse> execute() {
         List<Product> productList = productRepository.findAll();
 

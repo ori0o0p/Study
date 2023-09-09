@@ -1,5 +1,6 @@
 package com.example.shoppingmall.domain.user.service;
 
+import com.example.shoppingmall.domain.user.exception.AlreadyExistException;
 import com.example.shoppingmall.domain.user.controller.dto.request.SignupRequest;
 import com.example.shoppingmall.domain.user.entity.Role;
 import com.example.shoppingmall.domain.user.entity.User;
@@ -18,7 +19,7 @@ public class SignupService {
     public void execute(SignupRequest request) {
         if (userRepository.findByName(request.getName()) .isPresent() ||
             userRepository.findByEmail(request.getEmail()).isPresent()) {
-            throw new RuntimeException();// 예외 처리할 예정
+            throw AlreadyExistException.EXCEPTION;
         }
 
         userRepository.save(User.builder()
