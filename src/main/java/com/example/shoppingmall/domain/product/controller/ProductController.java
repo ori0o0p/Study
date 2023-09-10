@@ -4,6 +4,7 @@ import com.example.shoppingmall.domain.product.controller.dto.request.ModifyStoc
 import com.example.shoppingmall.domain.product.controller.dto.request.ProductModifyRequest;
 import com.example.shoppingmall.domain.product.controller.dto.request.ProductRequest;
 import com.example.shoppingmall.domain.product.controller.dto.response.ProductResponse;
+import com.example.shoppingmall.domain.product.entity.Product;
 import com.example.shoppingmall.domain.product.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -27,13 +28,13 @@ public class ProductController {
         productCreateService.execute(request);
     }
 
-    @PostMapping("/modify/{id}")
-    public void modifyProduct(@RequestBody ProductModifyRequest request,
-                              @PathVariable String id) {
-        productModifyService.execute(request, id);
+    @PutMapping("/modify/{id}")
+    public Product modifyProduct(@RequestBody ProductModifyRequest request,
+                                 @PathVariable String id) {
+        return productModifyService.execute(request, id);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/view/{id}")
     public ProductResponse findById(@PathVariable String id) {
         return productFindByIdService.execute(id);
     }
