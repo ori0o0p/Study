@@ -20,9 +20,9 @@ public class LoginService {
 
     public LoginResponse execute(LoginRequest request) {
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> UserNotFoundException.EXCEPTION); // 예외 처리 예정
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            throw PasswordNotMatchedException.EXCEPTION; // 예외 처리 예정
+            throw PasswordNotMatchedException.EXCEPTION;
         }
         String accessToken = jwtProvider.createAccessToken(request.getEmail());
 
