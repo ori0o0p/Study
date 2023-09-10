@@ -1,6 +1,7 @@
 package com.example.shoppingmall.domain.purchase.service;
 
 import com.example.shoppingmall.domain.product.entity.Product;
+import com.example.shoppingmall.domain.product.repository.ProductRepository;
 import com.example.shoppingmall.domain.product.service.ProductGetStockService;
 import com.example.shoppingmall.domain.product.service.facade.ProductFacade;
 import com.example.shoppingmall.domain.purchase.controller.dto.request.PurchaseRequest;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class PurchaseService {
+    private final ProductRepository productRepository;
     private final ProductGetStockService productGetStockService;
     private final ProductFacade productFacade;
 
@@ -22,7 +24,7 @@ public class PurchaseService {
         Integer stock = productGetStockService.execute(product.getId());
 
         if (stock < request.getAmount() || stock == 0) {
-            log.error("현재 재고 : " + stock + "재고가 부족합니다.");
+            log.error("현재 재고 : " + stock + "개 \n 재고가 부족합니다.");
             return PurchaseResponse.builder()
                     .stock(stock)
                     .isSuccess(false)
@@ -30,6 +32,8 @@ public class PurchaseService {
         } else {
             stock -= request.getAmount();
             product.purchase(stock);
+            productRepository.save(product);
+            log.info("구매 완료!");
             return PurchaseResponse.builder()
                     .stock(stock)
                     .isSuccess(true)
