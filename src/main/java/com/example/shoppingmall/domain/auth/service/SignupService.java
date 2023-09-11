@@ -1,7 +1,7 @@
-package com.example.shoppingmall.domain.user.service;
+package com.example.shoppingmall.domain.auth.service;
 
-import com.example.shoppingmall.domain.user.exception.AlreadyExistException;
-import com.example.shoppingmall.domain.user.controller.dto.request.SignupRequest;
+import com.example.shoppingmall.domain.auth.exception.AlreadyExistException;
+import com.example.shoppingmall.domain.auth.controller.dto.request.SignupRequest;
 import com.example.shoppingmall.domain.user.entity.Role;
 import com.example.shoppingmall.domain.user.entity.User;
 import com.example.shoppingmall.domain.user.repository.UserRepository;

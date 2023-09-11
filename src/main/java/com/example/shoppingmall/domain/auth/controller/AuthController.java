@@ -1,10 +1,10 @@
-package com.example.shoppingmall.domain.user.controller;
+package com.example.shoppingmall.domain.auth.controller;
 
-import com.example.shoppingmall.domain.user.controller.dto.request.LoginRequest;
-import com.example.shoppingmall.domain.user.controller.dto.request.SignupRequest;
-import com.example.shoppingmall.domain.user.controller.dto.response.LoginResponse;
-import com.example.shoppingmall.domain.user.service.LoginService;
-import com.example.shoppingmall.domain.user.service.SignupService;
+import com.example.shoppingmall.domain.auth.controller.dto.request.LoginRequest;
+import com.example.shoppingmall.domain.auth.controller.dto.request.SignupRequest;
+import com.example.shoppingmall.domain.auth.controller.dto.response.LoginResponse;
+import com.example.shoppingmall.domain.auth.service.LoginService;
+import com.example.shoppingmall.domain.auth.service.SignupService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

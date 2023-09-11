@@ -1,4 +1,4 @@
-package com.example.shoppingmall.domain.user.controller.dto.response;
+package com.example.shoppingmall.domain.auth.controller.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;

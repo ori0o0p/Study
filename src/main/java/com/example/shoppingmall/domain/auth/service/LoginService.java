@@ -1,9 +1,9 @@
-package com.example.shoppingmall.domain.user.service;
+package com.example.shoppingmall.domain.auth.service;
 
-import com.example.shoppingmall.domain.user.controller.dto.request.LoginRequest;
-import com.example.shoppingmall.domain.user.controller.dto.response.LoginResponse;
+import com.example.shoppingmall.domain.auth.controller.dto.request.LoginRequest;
+import com.example.shoppingmall.domain.auth.controller.dto.response.LoginResponse;
 import com.example.shoppingmall.domain.user.entity.User;
-import com.example.shoppingmall.domain.user.exception.PasswordNotMatchedException;
+import com.example.shoppingmall.domain.auth.exception.PasswordNotMatchedException;
 import com.example.shoppingmall.domain.user.exception.UserNotFoundException;
 import com.example.shoppingmall.domain.user.repository.UserRepository;
 import com.example.shoppingmall.global.security.JwtProvider;

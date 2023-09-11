@@ -1,4 +1,4 @@
-package com.example.shoppingmall.domain.user.exception;
+package com.example.shoppingmall.domain.auth.exception;
 
 import com.example.shoppingmall.global.exception.CustomException;
 import com.example.shoppingmall.global.exception.ErrorCode;
