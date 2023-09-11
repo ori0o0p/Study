@@ -3,14 +3,6 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/shopping_mall_db
 
-#spring:
-#  datasource:
-#    driver-class-name: org.mariadb.jdbc.Driver
-#    url: jdbc:mariadb://localhost:3306/shopping_mall
-#    username: usada
-#    password: pekora
-
-
 logging:
   level:
     org:
