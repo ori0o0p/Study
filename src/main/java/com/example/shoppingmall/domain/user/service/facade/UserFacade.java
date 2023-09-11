@@ -1,5 +1,6 @@
 package com.example.shoppingmall.domain.user.service.facade;
 
+import com.example.shoppingmall.domain.product.exception.ProductNotFoundException;
 import com.example.shoppingmall.domain.user.entity.User;
 import com.example.shoppingmall.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,11 @@ public class UserFacade {
         log.info("이 이메ㅣ일러 찾거 잇어요 : " + email);
         return userRepository.findByEmail(email)
                 .orElseThrow(RuntimeException::new); // 예외 처리 예정
+    }
+
+    public User getUserByEmail(String email) {
+        return userRepository.findById(email)
+                .orElseThrow(() -> ProductNotFoundException.EXCEPTION);
     }
 
 }
