@@ -24,12 +24,13 @@ public class ErrorResponse {
 
     public static ResponseEntity<ErrorResponse> fromValidationException(MethodArgumentNotValidException e) {
         StringBuilder errorMessage = new StringBuilder();
-        e.getBindingResult().getAllErrors().forEach(error -> errorMessage.append(error.getDefaultMessage()).append("; "));
+        e.getBindingResult().getAllErrors().forEach(error -> errorMessage.append(error.getDefaultMessage()).append("\n"));
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(new ErrorResponse(
-                        HttpStatus.BAD_REQUEST.value(),
-                        errorMessage.toString()));
+                .body(ErrorResponse.builder()
+                        .status(HttpStatus.BAD_REQUEST.value())
+                        .message(errorMessage.toString())
+                        .build());
     }
-
+    
 }
