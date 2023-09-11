@@ -4,7 +4,6 @@ import com.example.shoppingmall.domain.product.controller.dto.response.ProductRe
 import com.example.shoppingmall.domain.product.entity.Product;
 import com.example.shoppingmall.domain.product.repository.ProductRepository;
 import com.example.shoppingmall.domain.review.controller.dto.response.ReviewResponse;
-import com.example.shoppingmall.domain.review.entity.Review;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
