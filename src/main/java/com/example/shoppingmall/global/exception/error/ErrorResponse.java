@@ -1,4 +1,4 @@
-package com.example.shoppingmall.global.exception;
+package com.example.shoppingmall.global.exception.error;
 
 import lombok.Builder;
 import lombok.Data;
@@ -32,5 +32,5 @@ public class ErrorResponse {
                         .message(errorMessage.toString())
                         .build());
     }
-    
+
 }

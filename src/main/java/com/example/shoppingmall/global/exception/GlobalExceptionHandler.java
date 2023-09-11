@@ -1,5 +1,6 @@
 package com.example.shoppingmall.global.exception;
 
+import com.example.shoppingmall.global.exception.error.ErrorResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,4 +17,5 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleValidException(MethodArgumentNotValidException e){
         return ErrorResponse.fromValidationException(e);
     }
+
 }

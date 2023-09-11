@@ -1,7 +1,7 @@
 package com.example.shoppingmall.global.security.exception;
 
 import com.example.shoppingmall.global.exception.CustomException;
-import com.example.shoppingmall.global.exception.ErrorCode;
+import com.example.shoppingmall.global.exception.error.ErrorCode;
 
 public class JwtCreationFailedException extends CustomException {
     public static final CustomException EXCEPTION = new JwtCreationFailedException();
