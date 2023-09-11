@@ -1,5 +1,7 @@
 package com.example.shoppingmall.global.security;
 
+import com.example.shoppingmall.global.security.exception.InvalidDataException;
+import com.example.shoppingmall.global.security.exception.JwtCreationFailedException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
@@ -23,12 +25,12 @@ public class JwtProvider {
     private String secretKey;
 
     public String createAccessToken(String email) {
-        return createToken(email, "access", 720L);
+        return createToken(email, "access", 72000000L);
     }
 
     private String createToken(String email, String type, Long exp) {
         if (email == null || type == null || exp == null) {
-            throw new RuntimeException();
+            throw InvalidDataException.EXCEPTION;
         }
 
         long nowMillis = System.currentTimeMillis();
@@ -44,7 +46,7 @@ public class JwtProvider {
                     .signWith(SignatureAlgorithm.HS256, secretKey)
                     .compact();
         } catch (JwtException e) {
-            throw new RuntimeException();
+            throw JwtCreationFailedException.EXCEPTION;
         }
     }
 
