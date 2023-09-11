@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class ProductResponse {
         this.title = title;
         this.description = description;
         this.price = price;
-        this.postDate = postDate;
+        this.postDate = postedDate;
         this.imageURL = imageURL;
     }
 }
