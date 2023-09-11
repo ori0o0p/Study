@@ -1,6 +1,7 @@
 package com.example.shoppingmall.domain.review.service;
 
 import com.example.shoppingmall.domain.product.entity.Product;
+import com.example.shoppingmall.domain.product.repository.ProductRepository;
 import com.example.shoppingmall.domain.product.service.facade.ProductFacade;
 import com.example.shoppingmall.domain.review.controller.dto.request.ReviewRequest;
 import com.example.shoppingmall.domain.review.entity.Review;
@@ -16,6 +17,7 @@ import java.util.Date;
 @Service
 @RequiredArgsConstructor
 public class ReviewCreateService {
+    private final ProductRepository productRepository;
     private final ReviewRepository reviewRepository;
     private final UserFacade userFacade;
     private final ProductFacade productFacade;
@@ -25,15 +27,19 @@ public class ReviewCreateService {
         User user = userFacade.getUser();
         Product product = productFacade.getProductById(request.getProductId());
         Date now = dateFacade.getNowDate();
-
-        reviewRepository.save(Review.builder()
+        Review review = Review.builder()
                 .product(product)
                 .rating(request.getRating())
                 .content(request.getContent())
                 .writer(user)
                 .createdDate(now)
                 .imageURL(request.getImageURL())
-                .build());
+                .build();
+
+        reviewRepository.save(review);
+
+        product.getReview().add(review);
+        productRepository.save(product);
     }
 
 }

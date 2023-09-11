@@ -10,6 +10,8 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -42,7 +44,7 @@ public class Product {
     private String imageURL = "";
 
     @DBRef
-    private List<Review> review;
+    private List<Review> review = new ArrayList<>();
 
     @Builder
     public Product(User seller, String title, String description, String category, Integer price, Integer stock, Date postedDate, String imageURL) {
