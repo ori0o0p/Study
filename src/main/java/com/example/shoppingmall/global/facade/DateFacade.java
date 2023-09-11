@@ -11,6 +11,7 @@ public class DateFacade {
 
     public Date getNowDate() {
         LocalDateTime localDateTime = LocalDateTime.now();
-        return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+        ZoneId zoneId = ZoneId.systemDefault();
+        return Date.from(localDateTime.atZone(zoneId).toInstant());
     }
 }
