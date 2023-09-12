@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class ProductRequest {
-    private String sellerEmail;
-
     private String title;
 
     private String description;

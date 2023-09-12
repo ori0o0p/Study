@@ -22,17 +22,10 @@ public class UserProductFindService {
         List<Product> productList = productRepository.findBySellerId(user.getId());
 
         return productList.stream().map(p -> new ProductResponse(
-                p.getSeller(),
                 p.getTitle(),
                 p.getDescription(),
                 p.getCategory(),
                 p.getPrice(),
-                p.getReview().stream().map(r -> new ReviewResponse(
-                        r.getRating(),
-                        r.getContent(),
-                        r.getCreatedDate(),
-                        r.getImageURL()
-                )).toList(),
                 p.getPostedDate(),
                 p.getImageURL()
         )).toList();
