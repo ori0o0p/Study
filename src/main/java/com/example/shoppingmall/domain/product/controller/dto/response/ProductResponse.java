@@ -29,18 +29,18 @@ public class ProductResponse {
     private List<ReviewResponse> review;
 
     @Builder
-    public  ProductResponse(User seller, String category, String title, String description, Integer price, List<ReviewResponse> review, Date postDate, String imageURL) {
+    public ProductResponse(User seller, String title, String description, String category, Integer price, List<ReviewResponse> review, Date postDate, String imageURL) {
         this.seller = seller;
         this.title = title;
-        this.category = category;
         this.description = description;
+        this.category = category;
         this.price = price;
         this.review = review;
         this.postDate = postDate;
         this.imageURL = imageURL;
     }
 
-    public ProductResponse(User seller, String category, String title, String description, Integer price, Date postedDate, String imageURL) {
+    public ProductResponse(User seller, String title, String description, String category, Integer price, Date postedDate, String imageURL) {
         this.seller = seller;
         this.title = title;
         this.description = description;
