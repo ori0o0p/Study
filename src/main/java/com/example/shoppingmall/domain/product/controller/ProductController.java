@@ -21,15 +21,15 @@ public class ProductController {
     private final ProductFindAllService productFindAllService;
     private final ProductFindByIdService productFindByIdService;
     private final ProductGetCategoryListService productGetCategoryListService;
-    private final ModifyStockService modifyStockService;
+    private final UpdateStockService modifyStockService;
 
     @PostMapping
     public void createProduct(@RequestBody ProductRequest request) {
         productCreateService.execute(request);
     }
 
-    @PutMapping("/modify/{id}")
-    public Product modifyProduct(@RequestBody ProductModifyRequest request,
+    @PutMapping("/{id}")
+    public Product updateProduct(@RequestBody ProductModifyRequest request,
                                  @PathVariable String id) {
         return productModifyService.execute(request, id);
     }
@@ -55,7 +55,7 @@ public class ProductController {
     }
 
     @PostMapping("/stock")
-    public void addStock(@RequestBody ModifyStockRequest request) {
+    public void updateStock(@RequestBody ModifyStockRequest request) {
         modifyStockService.execute(request);
     }
 
