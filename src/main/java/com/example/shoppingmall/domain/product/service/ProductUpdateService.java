@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
-public class ProductModifyService {
+public class ProductUpdateService {
     private final ProductRepository productRepository;
     private final ProductFacade productFacade;
     private final DateFacade dateFacade;

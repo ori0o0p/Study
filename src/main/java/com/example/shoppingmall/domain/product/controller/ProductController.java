@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductCreateService productCreateService;
-    private final ProductModifyService productModifyService;
+    private final ProductUpdateService productModifyService;
     private final ProductDeleteService productDeleteService;
     private final ProductFindAllService productFindAllService;
     private final ProductFindByIdService productFindByIdService;
