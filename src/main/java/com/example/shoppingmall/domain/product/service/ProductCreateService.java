@@ -2,6 +2,7 @@ package com.example.shoppingmall.domain.product.service;
 
 import com.example.shoppingmall.domain.product.controller.dto.request.ProductRequest;
 import com.example.shoppingmall.domain.product.entity.Product;
+import com.example.shoppingmall.domain.product.entity.ProductDetails;
 import com.example.shoppingmall.domain.product.repository.ProductRepository;
 import com.example.shoppingmall.domain.user.entity.User;
 import com.example.shoppingmall.domain.user.service.facade.UserFacade;
@@ -22,15 +23,19 @@ public class ProductCreateService {
         User user = userFacade.getUser();
         Date now = dateFacade.getNowDate();
 
-        productRepository.save(Product.builder()
-                .seller(user)
+        ProductDetails details = ProductDetails.builder()
                 .title(request.getTitle())
                 .description(request.getDescription())
                 .category(request.getCategory())
                 .price(request.getPrice())
+                .imageURL(request.getImageURL())
+                .build();
+
+        productRepository.save(Product.builder()
+                .seller(user)
+                .details(details)
                 .stock(request.getStock())
                 .postedDate(now)
-                .imageURL(request.getImageURL())
                 .build());
     }
 }

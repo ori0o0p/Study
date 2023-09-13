@@ -4,13 +4,13 @@ import com.example.shoppingmall.domain.review.controller.dto.response.ReviewResp
 import com.example.shoppingmall.domain.user.entity.User;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
 
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class ProductResponse {
     private User seller;
 

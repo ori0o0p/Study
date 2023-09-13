@@ -31,7 +31,7 @@ public class PurchaseService {
                     .build();
         } else {
             stock -= request.getAmount();
-            product.purchase(stock);
+            product.purchaseProduct(stock);
             productRepository.save(product);
             log.info("구매 완료!");
             return PurchaseResponse.builder()
