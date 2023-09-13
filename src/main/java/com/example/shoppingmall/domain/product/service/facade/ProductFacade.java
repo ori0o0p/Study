@@ -4,9 +4,9 @@ import com.example.shoppingmall.domain.product.entity.Product;
 import com.example.shoppingmall.domain.product.exception.ProductNotFoundException;
 import com.example.shoppingmall.domain.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 @RequiredArgsConstructor
 public class ProductFacade {
     private final ProductRepository productRepository;

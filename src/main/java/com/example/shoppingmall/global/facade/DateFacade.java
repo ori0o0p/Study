@@ -1,12 +1,12 @@
 package com.example.shoppingmall.global.facade;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-@Service
+@Component
 public class DateFacade {
 
     public Date getNowDate() {
