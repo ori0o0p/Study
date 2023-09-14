@@ -2,6 +2,7 @@ package com.example.shoppingmall.domain.user.service.facade;
 
 import com.example.shoppingmall.domain.product.exception.ProductNotFoundException;
 import com.example.shoppingmall.domain.user.entity.User;
+import com.example.shoppingmall.domain.user.exception.UserNotFoundException;
 import com.example.shoppingmall.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,9 +19,8 @@ public class UserFacade {
     public User getUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-        log.info("이 이메ㅣ일러 찾거 잇어요 : " + email);
         return userRepository.findByEmail(email)
-                .orElseThrow(RuntimeException::new); // 예외 처리 예정
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
 
     public User getUserByEmail(String email) {
