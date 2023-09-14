@@ -20,22 +20,21 @@ public class PurchaseService {
 
     public PurchaseResponse execute(PurchaseRequest request) {
         Product product = productFacade.getProductById(request.getId());
-
         Integer stock = productGetStockService.execute(product.getId());
 
-        if (stock < request.getAmount() || stock == 0) {
+        if (stock < request.getAmount()) {
             log.error("현재 재고 : " + stock + "개 \n 재고가 부족합니다.");
             return PurchaseResponse.builder()
                     .stock(stock)
                     .isSuccess(false)
                     .build();
         } else {
-            stock -= request.getAmount();
-            product.purchaseProduct(stock);
+            Integer updatedStock = stock - request.getAmount();
+            product.purchaseProduct(updatedStock);
             productRepository.save(product);
             log.info("구매 완료!");
             return PurchaseResponse.builder()
-                    .stock(stock)
+                    .stock(updatedStock)
                     .isSuccess(true)
                     .build();
         }
