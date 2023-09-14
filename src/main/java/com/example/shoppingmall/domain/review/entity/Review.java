@@ -50,7 +50,7 @@ public class Review {
         this.imageURL = imageURL;
     }
 
-    public void modify(Integer rating, String content, Date modifiedDate, String imageURL) {
+    public void update(Integer rating, String content, Date modifiedDate, String imageURL) {
         this.rating = rating;
         this.content = content;
         this.createdDate = modifiedDate;

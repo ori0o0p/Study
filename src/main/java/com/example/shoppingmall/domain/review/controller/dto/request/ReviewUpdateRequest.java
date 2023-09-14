@@ -3,11 +3,10 @@ package com.example.shoppingmall.domain.review.controller.dto.request;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-
 @Getter
 @NoArgsConstructor
-public class ReviewRequest {
-    private String productId;
+public class ReviewUpdateRequest {
+    private String id;
 
     private Integer rating;
 
