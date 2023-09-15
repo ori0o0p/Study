@@ -23,7 +23,7 @@ public class ProductFindByIdService {
                 .price(product.getPrice())
                 .imageURL(product.getImageURL())
                 .build();
-        
+
         return ProductResponse.builder()
                 .seller(product.getSeller())
                 .details(details)
